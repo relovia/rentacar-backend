@@ -18,5 +18,4 @@ public class RentacarProjectApplication {
     public ModelMapper getModelMapper() {
         return new ModelMapper();
     }
-
 }
