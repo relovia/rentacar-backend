@@ -10,6 +10,7 @@ import com.tobeto.rentacarProject.business.dtos.responses.car.UpdateCarResponse;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,8 +29,9 @@ public class CarController {
 
     @GetMapping("/get/all")
     @ResponseStatus(HttpStatus.OK)
-    public List<GetAllCarResponse> getAll() {
-        return carService.getAll();
+    public ResponseEntity<List<GetAllCarResponse>> getAll() {
+        List<GetAllCarResponse> cars = carService.getAll();
+        return ResponseEntity.ok().body(cars);
     }
 
     @GetMapping("/get/{id}")
