@@ -10,13 +10,13 @@ import com.tobeto.rentacarProject.business.dtos.responses.fuel.UpdateFuelRespons
 import java.util.List;
 
 public interface FuelService {
-    CreateFuelResponse add(CreateFuelRequest createFuelRequest);
+    CreateFuelResponse createFuel(CreateFuelRequest createFuelRequest);
 
-    List<GetAllFuelResponse> getAll();
+    List<GetAllFuelResponse> getAllFuels();
 
     GetFuelByIdResponse getFuelById(int id);
 
-    UpdateFuelResponse update(UpdateFuelRequest request);
+    UpdateFuelResponse updateFuel(UpdateFuelRequest request);
 
-    void delete(int id);
+    void deleteFuel(int id);
 }

@@ -26,7 +26,7 @@ public class TransmissionManager implements TransmissionService {
     private TransmissionBusinessRules transmissionBusinessRules;
 
     @Override
-    public CreateTransmissionResponse add(CreateTransmissionRequest request) {
+    public CreateTransmissionResponse createTransmission(CreateTransmissionRequest request) {
         transmissionBusinessRules.transmissionNameCanNotBeDuplicated(request.getName());
 
         Transmission transmission = mapperService.forRequest().map(request, Transmission.class);
@@ -38,7 +38,7 @@ public class TransmissionManager implements TransmissionService {
     }
 
     @Override
-    public List<GetAllTransmissionResponse> getAll() {
+    public List<GetAllTransmissionResponse> getAllTransmissions() {
         List<Transmission> transmissions = transmissionRepository.findAll();
         List<GetAllTransmissionResponse> transmissionResponses = transmissions.stream()
                 .map(transmission -> mapperService.forResponse().map(transmission, GetAllTransmissionResponse.class))
@@ -57,7 +57,7 @@ public class TransmissionManager implements TransmissionService {
     }
 
     @Override
-    public UpdateTransmissionResponse update(UpdateTransmissionRequest request) {
+    public UpdateTransmissionResponse updateTransmission(UpdateTransmissionRequest request) {
         int transmissionId = request.getId();
         Transmission existingTransmission = transmissionRepository.findById(transmissionId)
                 .orElseThrow(() -> new RuntimeException("Transmission id not found."));
@@ -71,7 +71,7 @@ public class TransmissionManager implements TransmissionService {
     }
 
     @Override
-    public void delete(int id) {
+    public void deleteTransmission(int id) {
         transmissionRepository.deleteById(id);
     }
 }

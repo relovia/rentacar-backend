@@ -23,14 +23,14 @@ public class CarController {
 
     @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
-    public CreateCarResponse add(@RequestBody @Valid CreateCarRequest request) {
-        return carService.add(request);
+    public CreateCarResponse createCar(@RequestBody @Valid CreateCarRequest request) {
+        return carService.createCar(request);
     }
 
     @GetMapping("/get/all")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<List<GetAllCarResponse>> getAll() {
-        List<GetAllCarResponse> cars = carService.getAll();
+    public ResponseEntity<List<GetAllCarResponse>> getAllCars() {
+        List<GetAllCarResponse> cars = carService.getAllCars();
         return ResponseEntity.ok().body(cars);
     }
 
@@ -40,12 +40,12 @@ public class CarController {
     }
 
     @PutMapping("/update")
-    public UpdateCarResponse update(@RequestBody UpdateCarRequest request) {
-        return carService.update(request);
+    public UpdateCarResponse updateCar(@RequestBody UpdateCarRequest request) {
+        return carService.updateCar(request);
     }
 
     @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable int id) {
-        carService.delete(id);
+    public void deleteCar(@PathVariable int id) {
+        carService.deleteCar(id);
     }
 }

@@ -26,7 +26,7 @@ public class BrandManager implements BrandService {
     private BrandBusinessRules brandBusinessRules;
 
     @Override
-    public CreateBrandResponse add(CreateBrandRequest request) {
+    public CreateBrandResponse createBrand(CreateBrandRequest request) {
         brandBusinessRules.brandNameCanNotBeDuplicated(request.getName());
 
         Brand brand = mapperService.forRequest().map(request, Brand.class);
@@ -38,7 +38,7 @@ public class BrandManager implements BrandService {
     }
 
     @Override
-    public List<GetAllBrandResponse> getAll() {
+    public List<GetAllBrandResponse> getAllBrands() {
         List<Brand> brands = brandRepository.findAll();
         List<GetAllBrandResponse> response = brands.stream()
                 .map(brand -> mapperService.forResponse().map(brand, GetAllBrandResponse.class))
@@ -57,7 +57,7 @@ public class BrandManager implements BrandService {
     }
 
     @Override
-    public UpdateBrandResponse update(UpdateBrandRequest request) {
+    public UpdateBrandResponse updateBrand(UpdateBrandRequest request) {
         int brandId = request.getId();
         Brand existingBrand = brandRepository.findById(brandId)
                 .orElseThrow(() -> new RuntimeException("Brand id not found."));
@@ -71,7 +71,7 @@ public class BrandManager implements BrandService {
     }
 
     @Override
-    public void delete(int id) {
+    public void deleteBrand(int id) {
         brandRepository.deleteById(id);
     }
 }

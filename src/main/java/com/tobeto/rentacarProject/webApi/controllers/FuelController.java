@@ -22,14 +22,14 @@ public class FuelController {
 
     @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
-    public CreateFuelResponse add(@RequestBody @Valid CreateFuelRequest request) {
-        return fuelService.add(request);
+    public CreateFuelResponse createFuel(@RequestBody @Valid CreateFuelRequest request) {
+        return fuelService.createFuel(request);
     }
 
     @GetMapping("/get/all")
     @ResponseStatus(HttpStatus.OK)
-    public List<GetAllFuelResponse> getAll() {
-        return fuelService.getAll();
+    public List<GetAllFuelResponse> getAllFuels() {
+        return fuelService.getAllFuels();
     }
 
     @GetMapping("/get/{id}")
@@ -38,12 +38,12 @@ public class FuelController {
     }
 
     @PutMapping("/update")
-    public UpdateFuelResponse update(@RequestBody UpdateFuelRequest request) {
-        return fuelService.update(request);
+    public UpdateFuelResponse updateFuel(@RequestBody UpdateFuelRequest request) {
+        return fuelService.updateFuel(request);
     }
 
     @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable int id) {
-        fuelService.delete(id);
+    public void deleteFuel(@PathVariable int id) {
+        fuelService.deleteFuel(id);
     }
 }

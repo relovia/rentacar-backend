@@ -10,13 +10,13 @@ import com.tobeto.rentacarProject.business.dtos.responses.transmission.UpdateTra
 import java.util.List;
 
 public interface TransmissionService {
-    CreateTransmissionResponse add(CreateTransmissionRequest request);
+    CreateTransmissionResponse createTransmission(CreateTransmissionRequest request);
 
-    List<GetAllTransmissionResponse> getAll();
+    List<GetAllTransmissionResponse> getAllTransmissions();
 
     GetTransmissionByIdResponse getTransmissionById(int id);
 
-    UpdateTransmissionResponse update(UpdateTransmissionRequest request);
+    UpdateTransmissionResponse updateTransmission(UpdateTransmissionRequest request);
 
-    void delete(int id);
+    void deleteTransmission(int id);
 }

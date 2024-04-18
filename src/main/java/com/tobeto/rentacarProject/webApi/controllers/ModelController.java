@@ -22,14 +22,14 @@ public class ModelController {
 
     @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
-    public CreateModelResponse add(@RequestBody @Valid CreateModelRequest request) {
-        return modelService.add(request);
+    public CreateModelResponse createModel(@RequestBody @Valid CreateModelRequest request) {
+        return modelService.createModel(request);
     }
 
     @GetMapping("/get/all")
     @ResponseStatus(HttpStatus.OK)
-    public List<GetAllModelResponse> getAll() {
-        return modelService.getAll();
+    public List<GetAllModelResponse> getAllModels() {
+        return modelService.getAllModels();
     }
 
     @GetMapping("/get/{id}")
@@ -38,12 +38,12 @@ public class ModelController {
     }
 
     @PutMapping("/update")
-    public UpdateModelResponse update(@RequestBody UpdateModelRequest request) {
-        return modelService.update(request);
+    public UpdateModelResponse updateModel(@RequestBody UpdateModelRequest request) {
+        return modelService.updateModel(request);
     }
 
     @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable int id) {
-        modelService.delete(id);
+    public void deleteModel(@PathVariable int id) {
+        modelService.deleteModel(id);
     }
 }

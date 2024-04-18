@@ -10,13 +10,13 @@ import com.tobeto.rentacarProject.business.dtos.responses.model.UpdateModelRespo
 import java.util.List;
 
 public interface ModelService {
-    CreateModelResponse add(CreateModelRequest request);
+    CreateModelResponse createModel(CreateModelRequest request);
 
-    List<GetAllModelResponse> getAll();
+    List<GetAllModelResponse> getAllModels();
 
     GetModelByIdResponse getModelById(int id);
 
-    UpdateModelResponse update(UpdateModelRequest request);
+    UpdateModelResponse updateModel(UpdateModelRequest request);
 
-    void delete(int id);
+    void deleteModel(int id);
 }

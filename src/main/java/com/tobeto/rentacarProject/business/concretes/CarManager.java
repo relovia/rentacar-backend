@@ -26,7 +26,7 @@ public class CarManager implements CarService {
     private CarBusinessRules carBusinessRules;
 
     @Override
-    public CreateCarResponse add(CreateCarRequest request) {
+    public CreateCarResponse createCar(CreateCarRequest request) {
         carBusinessRules.carPlateCanNotBeDuplicated(request.getPlate());
 
         Car car = mapperService.forRequest().map(request, Car.class);
@@ -38,7 +38,7 @@ public class CarManager implements CarService {
     }
 
     @Override
-    public List<GetAllCarResponse> getAll() {
+    public List<GetAllCarResponse> getAllCars() {
         List<Car> cars = carRepository.findAll();
         List<GetAllCarResponse> getAllCarResponses = cars.stream()
                 .map(car -> mapperService.forResponse().map(car, GetAllCarResponse.class))
@@ -57,7 +57,7 @@ public class CarManager implements CarService {
     }
 
     @Override
-    public UpdateCarResponse update(UpdateCarRequest request) {
+    public UpdateCarResponse updateCar(UpdateCarRequest request) {
         int carId = request.getId();
         Car existingCar = carRepository.findById(carId)
                 .orElseThrow(() -> new RuntimeException("Car id not found."));
@@ -71,7 +71,7 @@ public class CarManager implements CarService {
     }
 
     @Override
-    public void delete(int id) {
+    public void deleteCar(int id) {
         carRepository.deleteById(id);
     }
 }

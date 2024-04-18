@@ -22,14 +22,14 @@ public class TransmissionController {
 
     @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
-    public CreateTransmissionResponse add(@RequestBody @Valid CreateTransmissionRequest request) {
-        return transmissionService.add(request);
+    public CreateTransmissionResponse createTransmission(@RequestBody @Valid CreateTransmissionRequest request) {
+        return transmissionService.createTransmission(request);
     }
 
     @GetMapping("/get/all")
     @ResponseStatus(HttpStatus.OK)
-    public List<GetAllTransmissionResponse> getAll() {
-        return transmissionService.getAll();
+    public List<GetAllTransmissionResponse> getAllTransmissions() {
+        return transmissionService.getAllTransmissions();
     }
 
 
@@ -39,12 +39,12 @@ public class TransmissionController {
     }
 
     @PutMapping("/update")
-    public UpdateTransmissionResponse update(@RequestBody UpdateTransmissionRequest request) {
-        return transmissionService.update(request);
+    public UpdateTransmissionResponse updateTransmission(@RequestBody UpdateTransmissionRequest request) {
+        return transmissionService.updateTransmission(request);
     }
 
     @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable int id) {
-        transmissionService.delete(id);
+    public void deleteTransmission(@PathVariable int id) {
+        transmissionService.deleteTransmission(id);
     }
 }

@@ -10,13 +10,13 @@ import com.tobeto.rentacarProject.business.dtos.responses.car.UpdateCarResponse;
 import java.util.List;
 
 public interface CarService {
-    CreateCarResponse add(CreateCarRequest createCarRequest);
+    CreateCarResponse createCar(CreateCarRequest createCarRequest);
 
-    List<GetAllCarResponse> getAll();
+    List<GetAllCarResponse> getAllCars();
 
     GetCarByIdResponse getCarById(int id);
 
-    UpdateCarResponse update(UpdateCarRequest request);
+    UpdateCarResponse updateCar(UpdateCarRequest request);
 
-    void delete(int id);
+    void deleteCar(int id);
 }

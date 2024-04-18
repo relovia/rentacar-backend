@@ -26,7 +26,7 @@ public class FuelManager implements FuelService {
     private FuelBusinessRules fuelBusinessRules;
 
     @Override
-    public CreateFuelResponse add(CreateFuelRequest request) {
+    public CreateFuelResponse createFuel(CreateFuelRequest request) {
         fuelBusinessRules.fuelNameCanNotBeDuplicated(request.getName());
 
         Fuel fuel = mapperService.forRequest().map(request, Fuel.class);
@@ -38,7 +38,7 @@ public class FuelManager implements FuelService {
     }
 
     @Override
-    public List<GetAllFuelResponse> getAll() {
+    public List<GetAllFuelResponse> getAllFuels() {
         List<Fuel> fuels = fuelRepository.findAll();
         List<GetAllFuelResponse> getAllFuelResponses = fuels.stream()
                 .map(fuel -> mapperService.forResponse().map(fuel, GetAllFuelResponse.class))
@@ -57,7 +57,7 @@ public class FuelManager implements FuelService {
     }
 
     @Override
-    public UpdateFuelResponse update(UpdateFuelRequest request) {
+    public UpdateFuelResponse updateFuel(UpdateFuelRequest request) {
         int fuelId = request.getId();
         Fuel existingFuel = fuelRepository.findById(fuelId)
                 .orElseThrow(() -> new RuntimeException("Fuel id not found."));
@@ -71,7 +71,7 @@ public class FuelManager implements FuelService {
     }
 
     @Override
-    public void delete(int id) {
+    public void deleteFuel(int id) {
         fuelRepository.deleteById(id);
     }
 }

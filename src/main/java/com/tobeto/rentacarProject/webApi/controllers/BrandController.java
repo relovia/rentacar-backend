@@ -22,14 +22,14 @@ public class BrandController {
 
     @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
-    public CreateBrandResponse add(@RequestBody @Valid CreateBrandRequest request) {
-        return brandService.add(request);
+    public CreateBrandResponse createBrand(@RequestBody @Valid CreateBrandRequest request) {
+        return brandService.createBrand(request);
     }
 
     @GetMapping("/get/all")
     @ResponseStatus(HttpStatus.OK)
-    public List<GetAllBrandResponse> getAll() {
-        return brandService.getAll();
+    public List<GetAllBrandResponse> getAllBrands() {
+        return brandService.getAllBrands();
     }
 
     @GetMapping("/get/{id}")
@@ -38,12 +38,12 @@ public class BrandController {
     }
 
     @PutMapping("/update")
-    public UpdateBrandResponse update(@RequestBody UpdateBrandRequest request) {
-        return brandService.update(request);
+    public UpdateBrandResponse updateBrand(@RequestBody UpdateBrandRequest request) {
+        return brandService.updateBrand(request);
     }
 
     @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable int id) {
-        brandService.delete(id);
+    public void deleteBrand(@PathVariable int id) {
+        brandService.deleteBrand(id);
     }
 }

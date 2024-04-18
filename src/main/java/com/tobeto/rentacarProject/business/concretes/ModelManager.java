@@ -26,7 +26,7 @@ public class ModelManager implements ModelService {
     private ModelBusinessRules modelBusinessRules;
 
     @Override
-    public CreateModelResponse add(CreateModelRequest request) {
+    public CreateModelResponse createModel(CreateModelRequest request) {
         modelBusinessRules.modelNameCanNotBeDuplicated(request.getName());
 
         Model model = mapperService.forRequest().map(request, Model.class);
@@ -38,7 +38,7 @@ public class ModelManager implements ModelService {
     }
 
     @Override
-    public List<GetAllModelResponse> getAll() {
+    public List<GetAllModelResponse> getAllModels() {
         List<Model> models = modelRepository.findAll();
         List<GetAllModelResponse> getAllModelResponses = models.stream()
                 .map(model -> mapperService.forResponse().map(model, GetAllModelResponse.class))
@@ -57,7 +57,7 @@ public class ModelManager implements ModelService {
     }
 
     @Override
-    public UpdateModelResponse update(UpdateModelRequest request) {
+    public UpdateModelResponse updateModel(UpdateModelRequest request) {
         int modelId = request.getId();
         Model existingModel = modelRepository.findById(modelId)
                 .orElseThrow(() -> new RuntimeException("Model id not found."));
@@ -71,7 +71,7 @@ public class ModelManager implements ModelService {
     }
 
     @Override
-    public void delete(int id) {
+    public void deleteModel(int id) {
         modelRepository.deleteById(id);
     }
 }

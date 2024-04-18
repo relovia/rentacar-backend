@@ -10,13 +10,13 @@ import com.tobeto.rentacarProject.business.dtos.responses.brand.UpdateBrandRespo
 import java.util.List;
 
 public interface BrandService {
-    CreateBrandResponse add(CreateBrandRequest request);
+    CreateBrandResponse createBrand(CreateBrandRequest request);
 
-    List<GetAllBrandResponse> getAll();
+    List<GetAllBrandResponse> getAllBrands();
 
     GetBrandByIdResponse getBrandById(int id);
 
-    UpdateBrandResponse update(UpdateBrandRequest request);
+    UpdateBrandResponse updateBrand(UpdateBrandRequest request);
 
-    void delete(int id);
+    void deleteBrand(int id);
 }
