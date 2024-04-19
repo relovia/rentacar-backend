@@ -10,6 +10,7 @@ import com.tobeto.rentacarProject.business.dtos.responses.car.UpdateCarResponse;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,7 +28,7 @@ public class CarController {
         return carService.createCar(request);
     }
 
-    @GetMapping("/get/all")
+    @GetMapping(value = "/get/all", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<List<GetAllCarResponse>> getAllCars() {
         List<GetAllCarResponse> cars = carService.getAllCars();

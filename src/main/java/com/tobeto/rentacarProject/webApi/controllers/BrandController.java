@@ -10,6 +10,7 @@ import com.tobeto.rentacarProject.business.dtos.responses.brand.UpdateBrandRespo
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,7 +27,7 @@ public class BrandController {
         return brandService.createBrand(request);
     }
 
-    @GetMapping("/get/all")
+    @GetMapping(value = "/get/all", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public List<GetAllBrandResponse> getAllBrands() {
         return brandService.getAllBrands();
