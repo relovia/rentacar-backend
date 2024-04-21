@@ -21,7 +21,7 @@ import java.util.List;
 public class BrandController {
     private BrandService brandService;
 
-    @PostMapping("/add")
+    @PostMapping(value = "/add", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public CreateBrandResponse createBrand(@RequestBody @Valid CreateBrandRequest request) {
         return brandService.createBrand(request);
@@ -33,17 +33,17 @@ public class BrandController {
         return brandService.getAllBrands();
     }
 
-    @GetMapping("/get/{id}")
+    @GetMapping(value = "/get/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public GetBrandByIdResponse getBrandById(@PathVariable int id) {
         return brandService.getBrandById(id);
     }
 
-    @PutMapping("/update")
+    @PutMapping(value = "/update", produces = MediaType.APPLICATION_JSON_VALUE)
     public UpdateBrandResponse updateBrand(@RequestBody UpdateBrandRequest request) {
         return brandService.updateBrand(request);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping(value = "/delete/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public void deleteBrand(@PathVariable int id) {
         brandService.deleteBrand(id);
     }

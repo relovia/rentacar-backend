@@ -21,7 +21,7 @@ import java.util.List;
 public class FuelController {
     private FuelService fuelService;
 
-    @PostMapping("/add")
+    @PostMapping(value = "/add", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public CreateFuelResponse createFuel(@RequestBody @Valid CreateFuelRequest request) {
         return fuelService.createFuel(request);
@@ -33,17 +33,17 @@ public class FuelController {
         return fuelService.getAllFuels();
     }
 
-    @GetMapping("/get/{id}")
+    @GetMapping(value = "/get/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public GetFuelByIdResponse getFuelById(@PathVariable int id) {
         return fuelService.getFuelById(id);
     }
 
-    @PutMapping("/update")
+    @PutMapping(value = "/update", produces = MediaType.APPLICATION_JSON_VALUE)
     public UpdateFuelResponse updateFuel(@RequestBody UpdateFuelRequest request) {
         return fuelService.updateFuel(request);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping(value = "/delete/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public void deleteFuel(@PathVariable int id) {
         fuelService.deleteFuel(id);
     }

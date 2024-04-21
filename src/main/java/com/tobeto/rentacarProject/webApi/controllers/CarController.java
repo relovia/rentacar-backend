@@ -22,7 +22,7 @@ import java.util.List;
 public class CarController {
     private CarService carService;
 
-    @PostMapping("/add")
+    @PostMapping(value = "/add", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public CreateCarResponse createCar(@RequestBody @Valid CreateCarRequest request) {
         return carService.createCar(request);
@@ -35,17 +35,17 @@ public class CarController {
         return ResponseEntity.ok().body(cars);
     }
 
-    @GetMapping("/get/{id}")
+    @GetMapping(value = "/get/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public GetCarByIdResponse getCarById(@PathVariable int id) {
         return carService.getCarById(id);
     }
 
-    @PutMapping("/update")
+    @PutMapping(value = "/update", produces = MediaType.APPLICATION_JSON_VALUE)
     public UpdateCarResponse updateCar(@RequestBody UpdateCarRequest request) {
         return carService.updateCar(request);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping(value = "/delete/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public void deleteCar(@PathVariable int id) {
         carService.deleteCar(id);
     }

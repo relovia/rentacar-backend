@@ -21,7 +21,7 @@ import java.util.List;
 public class TransmissionController {
     private TransmissionService transmissionService;
 
-    @PostMapping("/add")
+    @PostMapping(value = "/add", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public CreateTransmissionResponse createTransmission(@RequestBody @Valid CreateTransmissionRequest request) {
         return transmissionService.createTransmission(request);
@@ -34,17 +34,17 @@ public class TransmissionController {
     }
 
 
-    @GetMapping("/get/{id}")
+    @GetMapping(value = "/get/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public GetTransmissionByIdResponse getTransmissionById(@PathVariable int id) {
         return transmissionService.getTransmissionById(id);
     }
 
-    @PutMapping("/update")
+    @PutMapping(value = "/update", produces = MediaType.APPLICATION_JSON_VALUE)
     public UpdateTransmissionResponse updateTransmission(@RequestBody UpdateTransmissionRequest request) {
         return transmissionService.updateTransmission(request);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping(value = "/delete/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public void deleteTransmission(@PathVariable int id) {
         transmissionService.deleteTransmission(id);
     }
