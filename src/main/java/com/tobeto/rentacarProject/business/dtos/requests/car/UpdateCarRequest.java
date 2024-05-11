@@ -1,7 +1,5 @@
 package com.tobeto.rentacarProject.business.dtos.requests.car;
 
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;

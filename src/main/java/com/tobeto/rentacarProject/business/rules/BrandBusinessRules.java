@@ -4,7 +4,6 @@ import com.tobeto.rentacarProject.core.utilities.exceptions.types.BusinessExcept
 import com.tobeto.rentacarProject.dataAccess.abstracts.BrandRepository;
 import com.tobeto.rentacarProject.entities.concretes.Brand;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
