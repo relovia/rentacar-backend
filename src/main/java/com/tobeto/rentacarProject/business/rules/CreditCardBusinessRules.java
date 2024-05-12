@@ -2,6 +2,7 @@ package com.tobeto.rentacarProject.business.rules;
 
 import com.tobeto.rentacarProject.core.utilities.exceptions.types.BusinessException;
 import com.tobeto.rentacarProject.dataAccess.abstracts.CreditCardRepository;
+import com.tobeto.rentacarProject.entities.concretes.Car;
 import com.tobeto.rentacarProject.entities.concretes.CreditCard;
 
 import lombok.AllArgsConstructor;
@@ -42,12 +43,12 @@ public class CreditCardBusinessRules {
         }
     }
 
-    public void checkCreditCardBalance(String cardNumber, double amount) {
+    public void checkCreditCardBalance(String cardNumber, Car car) {
         Optional<CreditCard> checkBalance = creditCardRepository.findByCardNumberIgnoreCase(cardNumber);
 
         if (checkBalance.isPresent()) {
             CreditCard creditCard = checkBalance.get();
-            if (creditCard.getBalance() < amount) {
+            if (creditCard.getBalance() < car.getDailyPrice()) {
                 throw new BusinessException("Insufficient balance on the credit card.");
             }
         } else {

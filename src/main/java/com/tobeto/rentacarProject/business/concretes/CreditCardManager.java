@@ -16,6 +16,7 @@ import com.tobeto.rentacarProject.business.dtos.responses.creditCard.UpdateCredi
 import com.tobeto.rentacarProject.business.rules.CreditCardBusinessRules;
 import com.tobeto.rentacarProject.core.utilities.mapping.ModelMapperService;
 import com.tobeto.rentacarProject.dataAccess.abstracts.CreditCardRepository;
+import com.tobeto.rentacarProject.entities.concretes.Car;
 import com.tobeto.rentacarProject.entities.concretes.CreditCard;
 
 import lombok.AllArgsConstructor;
@@ -29,7 +30,13 @@ public class CreditCardManager implements CreditCardService {
 
     @Override
     public CreateCreditCardResponse createCreditCard(CreateCreditCardRequest request) {
+        Car car = new Car();
+        car.getDailyPrice();
+        
         creditCardBusinessRules.cardNumberCanNotBeDuplicated(request.getCardNumber());
+        creditCardBusinessRules.validateCreditCardExpiration(request.getCardNumber());
+        creditCardBusinessRules.checkCreditCardBalance(request.getCardNumber(), car);;
+        creditCardBusinessRules.checkCreditCardBlockedStatus(request.getCardNumber());
 
         CreditCard creditCard = mapperService.forRequest().map(request, CreditCard.class);
         creditCard.setCreatedDate(LocalDateTime.now());
