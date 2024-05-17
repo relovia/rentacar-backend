@@ -1,5 +1,6 @@
 package com.tobeto.rentacarProject.business.dtos.requests.creditCard;
 
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
@@ -13,19 +14,19 @@ public class UpdateCreditCardRequest {
     @Positive
     private int id;
 
-    @NotNull
+    @NotEmpty
     private String cardNumber;
 
-    @NotNull
+    @NotEmpty
     private String cardHolderName;
 
-    @NotNull
+    @NotEmpty
     private int expiryMonth;
 
-    @NotNull
+    @NotEmpty
     private int expiryYear;
 
-    @NotNull
+    @NotEmpty
     private String cvv;
 
     @NotNull

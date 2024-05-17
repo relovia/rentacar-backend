@@ -28,18 +28,18 @@ public class CreditCardBusinessRules {
         Optional<CreditCard> creditCardExpiration = creditCardRepository.findByCardNumberIgnoreCase(cardNumber);
 
         if (creditCardExpiration.isPresent()) {
+            CreditCard creditCard = creditCardExpiration.get();
+            LocalDate currentDate = LocalDate.now();
+            // To check the last hour of the last day
+            LocalDate expirationDate = LocalDate.of(creditCard.getExpiryYear(), creditCard.getExpiryMonth(), 1)
+                    .plusMonths(1)
+                    .minusDays(1);
+
+            if (currentDate.isAfter(expirationDate)) {
+                throw new BusinessException("Credit card is expired.");
+            }
+        } else {
             throw new BusinessException("Credit card not found.");
-        }
-
-        CreditCard creditCard = creditCardExpiration.get();
-        LocalDate currentDate = LocalDate.now();
-        // To check the last hour of the last day
-        LocalDate expirationDate = LocalDate.of(creditCard.getExpiryYear(), creditCard.getExpiryMonth(), 1)
-                .plusMonths(1)
-                .minusDays(1);
-
-        if (currentDate.isAfter(expirationDate)) {
-            throw new BusinessException("Credit card is expired.");
         }
     }
 
