@@ -15,6 +15,7 @@ public class UpdateModelResponse {
     private int brandId;
     private int fuelId;
     private int transmissionId;
+    private String color;
     private String message;
     private LocalDateTime createdDate;
 }

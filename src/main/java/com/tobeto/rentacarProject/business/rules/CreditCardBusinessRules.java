@@ -68,4 +68,17 @@ public class CreditCardBusinessRules {
             throw new BusinessException("Credit card not found");
         }
     }
+
+    public void checkCreditCardOwner(String cardNumber, String cardHolderName) {
+        Optional<CreditCard> checkOwner = creditCardRepository.findByCardNumberIgnoreCase(cardNumber);
+
+        if (checkOwner.isPresent()) {
+            CreditCard foundCard = checkOwner.get();
+            if (!foundCard.getCardHolderName().equalsIgnoreCase(cardHolderName)) {
+                throw new BusinessException("Credit card owner is not the same as the one provided.");
+            }
+        } else {
+            throw new BusinessException("Credit card not found");
+        }
+    }
 }

@@ -15,5 +15,6 @@ public class GetAllModelResponse {
     private int brandId;
     private int fuelId;
     private int transmissionId;
+    private String color;
     private LocalDateTime createdDate;
 }

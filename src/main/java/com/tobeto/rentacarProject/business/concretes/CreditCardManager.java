@@ -37,6 +37,7 @@ public class CreditCardManager implements CreditCardService {
         creditCardBusinessRules.validateCreditCardExpiration(request.getCardNumber());
         creditCardBusinessRules.checkCreditCardBalance(request.getCardNumber(), car);;
         creditCardBusinessRules.checkCreditCardBlockedStatus(request.getCardNumber());
+        creditCardBusinessRules.checkCreditCardOwner(request.getCardNumber(), request.getCardHolderName());
 
         CreditCard creditCard = mapperService.forRequest().map(request, CreditCard.class);
         creditCard.setCreatedDate(LocalDateTime.now());

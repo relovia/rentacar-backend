@@ -22,4 +22,7 @@ public class CreateModelRequest {
 
     @NotNull
     private int transmissionId;
+
+    @NotNull
+    private String color;
 }

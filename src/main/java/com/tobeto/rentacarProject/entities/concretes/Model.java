@@ -29,6 +29,11 @@ public class Model extends BaseEntity {
     @JoinColumn(name = "transmissionId")
     private Transmission transmission;
 
+    @Column(name = "color")
+    private String color;
+
     @OneToMany(mappedBy = "model")
     private List<Car> cars;
+
+
 }
