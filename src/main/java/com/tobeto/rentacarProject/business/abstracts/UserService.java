@@ -12,7 +12,7 @@ import java.util.List;
 public interface UserService {
     CreateUserResponse createUser(CreateUserRequest request);
 
-    List<GetAllUserResponse> getAllUser();
+    List<GetAllUserResponse> getAllUsers();
 
     GetUserByIdResponse getUserById(int id);
 

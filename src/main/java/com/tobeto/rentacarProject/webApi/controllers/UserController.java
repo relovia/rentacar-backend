@@ -29,8 +29,8 @@ public class UserController {
 
     @GetMapping(value = "/get/all", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public List<GetAllUserResponse> getAllUser() {
-        return userService.getAllUser();
+    public List<GetAllUserResponse> getAllUsers() {
+        return userService.getAllUsers();
     }
 
     @GetMapping(value = "/get/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
