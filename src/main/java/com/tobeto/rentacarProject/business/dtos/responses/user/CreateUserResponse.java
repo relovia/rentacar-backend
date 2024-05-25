@@ -21,10 +21,6 @@ public class CreateUserResponse {
     private String email;
     private String phoneNumber;
     private String identityNumber;
-    private String address;
     private String city;
-    private String state;
-    private String country;
-    private String zipCode;
     private LocalDateTime createdDate;
 }

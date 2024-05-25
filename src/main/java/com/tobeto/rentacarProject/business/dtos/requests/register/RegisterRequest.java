@@ -1,14 +1,17 @@
-package com.tobeto.rentacarProject.business.dtos.requests.user;
+package com.tobeto.rentacarProject.business.dtos.requests.register;
 
+import com.tobeto.rentacarProject.core.enums.Role;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateUserRequest {
+@Builder
+public class RegisterRequest {
     @NotEmpty(message = "First name is required")
     @Size(min = 2, max = 30, message = "First name must be between 2 and 30 characters")
     private String firstName;
@@ -20,9 +23,6 @@ public class CreateUserRequest {
     @NotEmpty(message = "Company name is required")
     @Size(min = 2, max = 30, message = "Company name must be between 2 and 30 characters")
     private String companyName;
-
-    @NotEmpty(message = "Roles is required")
-    private String roles;
 
     @NotEmpty(message = "Username is required")
     @Size(min = 6, max = 24, message = "Username must be between 6 and 24 characters")

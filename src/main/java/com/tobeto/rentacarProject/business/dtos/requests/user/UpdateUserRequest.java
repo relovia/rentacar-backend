@@ -49,18 +49,6 @@ public class UpdateUserRequest {
     @Size(min = 11, max = 11, message = "Identity number must be between 11 and 11 characters")
     private String identityNumber;
 
-    @NotEmpty(message = "Address is required")
-    private String address;
-
     @NotEmpty(message = "City is required")
     private String city;
-
-    @NotEmpty(message = "State is required")
-    private String state;
-
-    @NotEmpty(message = "Country is required")
-    private String country;
-
-    @NotEmpty(message = "Zip code is required")
-    private String zipCode;
 }

@@ -19,4 +19,18 @@ public class UserBusinessRules {
             throw new BusinessException("User name exists.");
         }
     }
+
+    public void emailCanNotBeDuplicated(String email) {
+        Optional<User> user = userRepository.findByEmailIgnoreCase(email);
+        if (user.isPresent()) {
+            throw new BusinessException("Email exists.");
+        }
+    }
+
+    public void checkUserPresence(String email) {
+        Optional<User> user = userRepository.findByEmailIgnoreCase(email);
+        if (!user.isPresent()) {
+            throw new BusinessException("User not exists.");
+        }
+    }
 }
