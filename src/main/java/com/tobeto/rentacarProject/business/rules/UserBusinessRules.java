@@ -13,24 +13,10 @@ import java.util.Optional;
 public class UserBusinessRules {
     private UserRepository userRepository;
 
-    public void userNameCanNotBeDuplicated(String userName) {
-        Optional<User> user = userRepository.findByUsernameIgnoreCase(userName);
-        if (user.isPresent()) {
-            throw new BusinessException("User name exists.");
-        }
-    }
-
     public void emailCanNotBeDuplicated(String email) {
-        Optional<User> user = userRepository.findByEmailIgnoreCase(email);
+        Optional<User> user = userRepository.findByEmail(email);
         if (user.isPresent()) {
             throw new BusinessException("Email exists.");
-        }
-    }
-
-    public void checkUserPresence(String email) {
-        Optional<User> user = userRepository.findByEmailIgnoreCase(email);
-        if (!user.isPresent()) {
-            throw new BusinessException("User not exists.");
         }
     }
 }

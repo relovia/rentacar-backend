@@ -1,5 +1,6 @@
 package com.tobeto.rentacarProject.business.dtos.responses.user;
 
+import com.tobeto.rentacarProject.core.enums.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,13 +14,12 @@ public class GetUserByIdResponse {
     private int id;
     private String firstName;
     private String lastName;
-    private String companyName;
-    private String roles;
-    private String username;
-    private String password;
     private String email;
-    private String phoneNumber;
+    private String password;
     private String identityNumber;
+    private String companyName;
+    private Role role;
+    private String phoneNumber;
     private String city;
     private String message;
     private LocalDateTime createdDate;

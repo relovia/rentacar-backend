@@ -27,7 +27,7 @@ public class UserManager implements UserService {
 
     @Override
     public CreateUserResponse createUser(CreateUserRequest request) {
-        userBusinessRules.userNameCanNotBeDuplicated(request.getUsername());
+        userBusinessRules.emailCanNotBeDuplicated(request.getEmail());
 
         User user = mapperService.forRequest().map(request, User.class);
         user.setCreatedDate(LocalDateTime.now());
