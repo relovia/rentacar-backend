@@ -12,6 +12,8 @@ import com.tobeto.rentacarProject.core.utilities.mapping.ModelMapperService;
 import com.tobeto.rentacarProject.dataAccess.abstracts.UserRepository;
 import com.tobeto.rentacarProject.entities.concretes.User;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -73,5 +75,10 @@ public class UserManager implements UserService {
     @Override
     public void deleteUser(int id) {
         userRepository.deleteById(id);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return userRepository.findByEmail(username).orElseThrow(() -> new UsernameNotFoundException("User not found."));
     }
 }

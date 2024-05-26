@@ -1,6 +1,5 @@
 package com.tobeto.rentacarProject.business.dtos.requests.user;
 
-import com.tobeto.rentacarProject.core.enums.Role;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -38,9 +37,6 @@ public class UpdateUserRequest {
     @NotEmpty(message = "Company name is required")
     @Size(min = 2, max = 30, message = "Company name must be between 2 and 30 characters")
     private String companyName;
-
-    @NotEmpty(message = "Role is required")
-    private Role role;
 
     @NotEmpty(message = "Phone number is required")
     @Size(min = 10, max = 10, message = "Phone number must be between 10 and 10 characters")

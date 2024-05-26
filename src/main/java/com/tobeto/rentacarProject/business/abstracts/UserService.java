@@ -6,10 +6,11 @@ import com.tobeto.rentacarProject.business.dtos.responses.user.CreateUserRespons
 import com.tobeto.rentacarProject.business.dtos.responses.user.GetAllUserResponse;
 import com.tobeto.rentacarProject.business.dtos.responses.user.GetUserByIdResponse;
 import com.tobeto.rentacarProject.business.dtos.responses.user.UpdateUserResponse;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
 
-public interface UserService {
+public interface UserService extends UserDetailsService {
     CreateUserResponse createUser(CreateUserRequest request);
 
     List<GetAllUserResponse> getAllUsers();
