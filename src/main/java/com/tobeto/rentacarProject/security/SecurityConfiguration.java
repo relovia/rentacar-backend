@@ -47,7 +47,8 @@ public class SecurityConfiguration {
             "/api/fuels/**",
             "/api/models/**",
             "/api/transmissions/**",
-            "api/users/**"
+            "/api/users/**",
+            "/api/**"
     };
 
     @Bean
@@ -57,12 +58,13 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(requests -> requests
                         .requestMatchers(WHITE_LIST_URLS).permitAll()
                         .requestMatchers("/api/auth/**").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/auth/register", "/api/auth/login").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/api/brands/**", "/api/cars/**", "/api/fuels/**", "/api/models/**", "/api/transmissions/**").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/api/users/**").hasAuthority(Role.ADMIN.name())
-                        .requestMatchers(HttpMethod.DELETE, "/api/brands/**", "/api/cars/**", "/api/creditCards/**", "/api/fuels/**", "/api/models/**", "api/rentals/**", "/api/transmissions/**", "/api/users/**").hasAuthority(Role.ADMIN.name())
-                        .requestMatchers(HttpMethod.POST, "/api/brands/**", "/api/cars/**", "/api/fuels/**", "/api/models/**", "/api/transmissions/**").hasAuthority(Role.ADMIN.name())
-                        .requestMatchers(HttpMethod.PUT, "/api/brands/**", "/api/cars/**", "/api/fuels/**", "/api/models/**", "/api/transmissions/**").hasAuthority(Role.ADMIN.name())
+                        .requestMatchers(HttpMethod.POST, "/api/auth/register", "/api/auth/login", "/api/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/brands/**", "/api/cars/**", "/api/fuels/**", "/api/models/**", "/api/transmissions/**", "/api/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/users/**", "/api/**").hasAuthority(Role.USER.name())
+                        .requestMatchers(HttpMethod.PUT, "/api/users/**", "/api/**").hasAuthority(Role.USER.name())
+                        .requestMatchers(HttpMethod.DELETE, "/api/brands/**", "/api/cars/**", "/api/creditCards/**", "/api/fuels/**", "/api/models/**", "api/rentals/**", "/api/transmissions/**", "/api/users/**", "/api/**").hasAuthority(Role.ADMIN.name())
+                        .requestMatchers(HttpMethod.POST, "/api/brands/**", "/api/cars/**", "/api/fuels/**", "/api/models/**", "/api/transmissions/**", "/api/**").hasAuthority(Role.ADMIN.name())
+                        .requestMatchers(HttpMethod.PUT, "/api/brands/**", "/api/cars/**", "/api/fuels/**", "/api/models/**", "/api/transmissions/**", "/api/**").hasAuthority(Role.ADMIN.name())
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

@@ -16,7 +16,7 @@ public class UserBusinessRules {
     public void emailCanNotBeDuplicated(String email) {
         Optional<User> user = userRepository.findByEmail(email);
         if (user.isPresent()) {
-            throw new BusinessException("User exists.");
+            throw new BusinessException("User exists. Please use another email.");
         }
     }
 

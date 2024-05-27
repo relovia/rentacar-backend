@@ -12,11 +12,11 @@ import com.tobeto.rentacarProject.core.utilities.mapping.ModelMapperService;
 import com.tobeto.rentacarProject.dataAccess.abstracts.UserRepository;
 import com.tobeto.rentacarProject.entities.concretes.User;
 import com.tobeto.rentacarProject.security.JwtService;
-import com.tobeto.rentacarProject.security.PasswordEncoderConfiguration;
 import lombok.AllArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -28,10 +28,9 @@ public class AuthManager implements AuthService {
     private UserRepository userRepository;
     private ModelMapperService mapperService;
     private UserBusinessRules userBusinessRules;
-    private PasswordEncoderConfiguration passwordEncoderConfiguration;
+    private PasswordEncoder passwordEncoder;
     private JwtService jwtService;
     private AuthenticationManager authenticationManager;
-
 
     @Override
     public RegisterResponse register(RegisterRequest registerRequest) {
@@ -41,7 +40,7 @@ public class AuthManager implements AuthService {
                 .firstName(registerRequest.getFirstName())
                 .lastName(registerRequest.getLastName())
                 .email(registerRequest.getEmail())
-                .password(passwordEncoderConfiguration.passwordEncoder().encode(registerRequest.getPassword()))
+                .password(passwordEncoder.encode(registerRequest.getPassword()))
                 .identityNumber(registerRequest.getIdentityNumber())
                 .companyName(registerRequest.getCompanyName())
                 .role(Role.ADMIN)
@@ -61,8 +60,8 @@ public class AuthManager implements AuthService {
         userBusinessRules.checkUserExists(loginRequest.getEmail());
         Optional<User> userOptional = userRepository.findByEmail(loginRequest.getEmail());
 
-        if (!passwordEncoderConfiguration.passwordEncoder().matches(loginRequest.getPassword(), userOptional.get().getPassword())) {
-            throw new IllegalArgumentException("Invalid email or password");
+        if (!passwordEncoder.matches(loginRequest.getPassword(), userOptional.get().getPassword())) {
+            throw new BusinessException("Invalid email or password");
         }
 
         try {
@@ -72,7 +71,7 @@ public class AuthManager implements AuthService {
             if (authentication.isAuthenticated()) {
                 jwt = jwtService.generateToken(loginRequest.getEmail());
             } else {
-                throw new IllegalArgumentException("Invalid email or password");
+                throw new BusinessException("Invalid email or password");
             }
 
             LoginResponse loginResponse = LoginResponse.builder()
