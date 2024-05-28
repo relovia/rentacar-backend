@@ -18,6 +18,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/fuels")
 @AllArgsConstructor
+@CrossOrigin(origins = "http://localhost:4200")
 public class FuelController {
     private FuelService fuelService;
 

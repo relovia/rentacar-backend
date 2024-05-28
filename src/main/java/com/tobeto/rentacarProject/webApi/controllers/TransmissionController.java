@@ -18,6 +18,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/transmissions")
 @AllArgsConstructor
+@CrossOrigin(origins = "http://localhost:4200")
 public class TransmissionController {
     private TransmissionService transmissionService;
 

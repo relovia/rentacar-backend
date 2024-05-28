@@ -18,6 +18,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/models")
 @AllArgsConstructor
+@CrossOrigin(origins = "http://localhost:4200")
 public class ModelController {
     private ModelService modelService;
 
