@@ -43,7 +43,7 @@ public class AuthManager implements AuthService {
                 .password(passwordEncoder.encode(registerRequest.getPassword()))
                 .identityNumber(registerRequest.getIdentityNumber())
                 .companyName(registerRequest.getCompanyName())
-                .role(Role.ADMIN)
+                .role(Role.USER) // Default role is user
                 .phoneNumber(registerRequest.getPhoneNumber())
                 .city(registerRequest.getCity())
                 .build();
