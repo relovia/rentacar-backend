@@ -1,4 +1,4 @@
-FROM mvn:openjdk:21-jdk as builder
+FROM jelastic/maven:3.9.5-openjdk-21 as builder
 COPY . .
 RUN mvn clean package -DskipTests
 
