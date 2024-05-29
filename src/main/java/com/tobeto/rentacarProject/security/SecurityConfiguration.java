@@ -47,6 +47,7 @@ public class SecurityConfiguration {
             "/api/fuels/**",
             "/api/models/**",
             "/api/transmissions/**",
+            "/api/rentals/**",
             "/api/users/**",
             "/api/**"
     };
@@ -58,7 +59,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(requests -> requests
                         .requestMatchers(WHITE_LIST_URLS).permitAll()
                         .requestMatchers("/api/auth/**").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/auth/register", "/api/auth/login", "/api/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/auth/register", "/api/auth/login", "/api/rentals/**", "/api/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/brands/**", "/api/cars/**", "/api/fuels/**", "/api/models/**", "/api/transmissions/**", "/api/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/users/**", "/api/**").hasAuthority(Role.USER.name())
                         .requestMatchers(HttpMethod.PUT, "/api/users/**", "/api/**").hasAuthority(Role.USER.name())
