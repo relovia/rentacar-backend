@@ -18,7 +18,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/models")
 @AllArgsConstructor
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = {"http://localhost:4200", "https://rentacar-backend-575927ecf713.herokuapp.com/"})
 public class ModelController {
     private ModelService modelService;
 
