@@ -16,10 +16,10 @@ import java.util.Map;
 
 @Service
 public class JwtService {
-    @Value("${jwt.key}")
+    @Value("${application.security.jwt.key}")
     private String SECRET;
 
-    @Value("${jwt.expiration}")
+    @Value("${application.security.jwt.expiration}")
     private long EXPIRATION;
 
     public String generateToken(String username) {
