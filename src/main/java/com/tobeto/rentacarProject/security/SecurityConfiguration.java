@@ -58,7 +58,6 @@ public class SecurityConfiguration {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(requests -> requests
                         .requestMatchers(WHITE_LIST_URLS).permitAll()
-                        .requestMatchers("/api/**").permitAll()
                         .requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/auth/register", "/api/auth/login", "/api/rentals/**", "/api/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/brands/**", "/api/cars/**", "/api/fuels/**", "/api/models/**", "/api/transmissions/**", "/api/**").permitAll()
