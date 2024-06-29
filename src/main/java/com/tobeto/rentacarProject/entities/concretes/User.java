@@ -41,7 +41,7 @@ public class User extends BaseEntity implements UserDetails {
 
     @Column(name = "role")
     @Enumerated(EnumType.STRING)
-    private Role role = Role.ADMIN;
+    private Role role = Role.USER;
 
     @Column(name = "phoneNumber")
     private String phoneNumber;
