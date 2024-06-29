@@ -17,12 +17,10 @@ public class WebConfig implements WebMvcConfigurer {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("http://localhost:4200", "https://rentacar-backend-575927ecf713.herokuapp.com")
-                        .allowedMethods(HttpMethod.GET.name(),
-                                HttpMethod.POST.name(),
-                                HttpMethod.PUT.name(),
-                                HttpMethod.DELETE.name())
-                        .allowedHeaders(HttpHeaders.CONTENT_TYPE, HttpHeaders.AUTHORIZATION);
+                        .allowedOrigins("http://localhost:4200", "https://rentacar-frontend.vercel.app")
+                        .allowedMethods("GET", "POST", "PUT", "DELETE")
+                        .allowedHeaders("*")
+                        .allowCredentials(true);
             }
         };
     }
